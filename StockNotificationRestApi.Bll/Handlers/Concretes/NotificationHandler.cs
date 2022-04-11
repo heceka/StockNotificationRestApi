@@ -2,8 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Threading.Tasks;
+using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using StockNotificationRestApi.Bll.Handlers.Abstracts;
@@ -14,7 +15,6 @@ using StockNotificationRestApi.Core.Utilities.Results.Concretes;
 using StockNotificationRestApi.Entities.Concretes;
 using StockNotificationRestApi.Entities.Configs;
 using StockNotificationRestApi.Entities.DTOs;
-using System.Text;
 using StockNotificationRestApi.Entities.Enums;
 #endregion
 
@@ -134,7 +134,7 @@ namespace StockNotificationRestApi.Bll.Handlers.Concretes
 						stockNotificationType.ToString(), stockNotifications[i].Id);
 				}
 			}
-		} 
+		}
 		#endregion
 
 		#endregion

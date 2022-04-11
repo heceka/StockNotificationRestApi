@@ -20,7 +20,7 @@ namespace StockNotificationRestApi.Controllers
 	{
 		#region DEFINES
 		private readonly IStockNotificationService _service;
-		private readonly ILogger<StockNotificationsController> _log;		
+		private readonly ILogger<StockNotificationsController> _log;
 		private readonly NotificationHandler _notificationHandler;
 		#endregion
 
@@ -29,7 +29,7 @@ namespace StockNotificationRestApi.Controllers
 			NotificationHandler notificationHandler)
 		{
 			_service = service;
-			_log = log;			
+			_log = log;
 			_notificationHandler = notificationHandler;
 		}
 		#endregion

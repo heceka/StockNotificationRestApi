@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using StockNotificationRestApi.Core.Utilities.Results.Abstracts;
 using StockNotificationRestApi.Entities.Concretes;
-using StockNotificationRestApi.Entities.DTOs; 
+using StockNotificationRestApi.Entities.DTOs;
 #endregion
 
 namespace StockNotificationRestApi.Bll.Services.Abstracts

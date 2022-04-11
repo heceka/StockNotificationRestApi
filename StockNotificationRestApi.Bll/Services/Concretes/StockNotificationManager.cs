@@ -43,7 +43,7 @@ namespace StockNotificationRestApi.Bll.Services.Concretes
 		#endregion
 
 		#region GET ALL BY PRODUCT ID
-		public  async Task<IDataResult<List<StockNotification>>> GetAllByProductId(string productId)
+		public async Task<IDataResult<List<StockNotification>>> GetAllByProductId(string productId)
 		{
 			#region RULES
 			if( String.IsNullOrEmpty(productId) )

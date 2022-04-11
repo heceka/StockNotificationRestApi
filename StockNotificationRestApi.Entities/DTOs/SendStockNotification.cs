@@ -7,10 +7,10 @@ namespace StockNotificationRestApi.Entities.DTOs
 		[JsonPropertyName("productId")]
 		public string ProductId { get; set; }
 
-		[JsonPropertyName("productName")] 
+		[JsonPropertyName("productName")]
 		public string ProductName { get; set; }
 
-		[JsonPropertyName("userId")] 
+		[JsonPropertyName("userId")]
 		public string UserId { get; set; }
 	}
 }
