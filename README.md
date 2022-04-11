@@ -1,6 +1,7 @@
 # STOK BILDIRIM REST API
 
 ### Bu Api, bir microservice mimarisinin parcasidir.
+
 Web veya mobile uzerinden bir urunun stokta olmadigi durumda, kayitli kullanicinin "gelince haber ver" secenegini ile urun stok takibi yapabilmesini 
 saglamayi amaclamaktadir.
 
