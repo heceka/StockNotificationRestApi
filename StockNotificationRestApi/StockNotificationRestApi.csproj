@@ -1,8 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UserSecretsId>4f55ed77-fd03-43fa-b457-5dcaaf842455</UserSecretsId>
+	</PropertyGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.23" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\StockNotificationRestApi.Dal\StockNotificationRestApi.Dal.csproj" />
+	  <ProjectReference Include="..\StockNotificationRestApi.Entities\StockNotificationRestApi.Entities.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Controllers\" />
+	</ItemGroup>
 
 </Project>

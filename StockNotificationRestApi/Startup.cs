@@ -6,29 +6,45 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using StockNotificationRestApi.Dal.Contexts.EntityFramework;
+using StockNotificationRestApi.Dal.Repositories.Abstracts;
+using StockNotificationRestApi.Dal.Repositories.Concretes;
 
 namespace StockNotificationRestApi
 {
 	public class Startup
 	{
+		#region DEFINES
+		public IConfiguration Configuration { get; }
+		#endregion
+
+		#region CONSTRUCTOR
 		public Startup(IConfiguration configuration)
 		{
 			Configuration = configuration;
 		}
+		#endregion
 
-		public IConfiguration Configuration { get; }
-
-		// This method gets called by the runtime. Use this method to add services to the container.
+		#region CONFIGURE SERVICE
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddControllers();
-		}
+			#region ADD DB CONTEXT
+			services.AddDbContext<StockNotificationContext>(options =>
+				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+			#endregion
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+			services.AddControllers();
+
+			services.AddScoped<IStockNotificationRepository, EfStockNotificationRepository>();
+		}
+		#endregion
+
+		#region CONFIGURE
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if( env.IsDevelopment() )
@@ -46,6 +62,7 @@ namespace StockNotificationRestApi
 			{
 				endpoints.MapControllers();
 			});
-		}
+		} 
+		#endregion
 	}
 }
