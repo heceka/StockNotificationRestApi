@@ -18,9 +18,7 @@ namespace StockNotificationRestApi.Dal.Migrations
                     ModifiedByUser = table.Column<string>(maxLength: 256, nullable: false),
                     ModifiedDateTime = table.Column<DateTime>(nullable: false),
                     ProductId = table.Column<string>(maxLength: 256, nullable: false),
-                    UserId = table.Column<string>(maxLength: 256, nullable: false),
-                    UserEmail = table.Column<string>(maxLength: 256, nullable: false),
-                    NotificationType = table.Column<int>(nullable: false)
+                    UserId = table.Column<string>(maxLength: 256, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -28,9 +26,9 @@ namespace StockNotificationRestApi.Dal.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_StockNotifications_ProductId_UserId_NotificationType",
+                name: "IX_StockNotifications_ProductId_UserId",
                 table: "StockNotifications",
-                columns: new[] { "ProductId", "UserId", "NotificationType" },
+                columns: new[] { "ProductId", "UserId" },
                 unique: true);
         }
 

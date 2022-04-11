@@ -22,11 +22,10 @@ namespace StockNotificationRestApi.Dal.Contexts.EntityFramework
 				b.Property(x => x.Id).ValueGeneratedOnAdd().IsRequired();
 				b.Property(x => x.ProductId).HasMaxLength(256).IsRequired();
 				b.Property(x => x.UserId).HasMaxLength(256).IsRequired();
-				b.Property(x => x.UserEmail).HasMaxLength(256).IsRequired();
 				b.Property(x => x.CreatedByUser).HasMaxLength(256).IsRequired();
 				b.Property(x => x.ModifiedByUser).HasMaxLength(256).IsRequired();
 
-				b.HasIndex(x => new { x.ProductId, x.UserId, x.NotificationType }).IsUnique();
+				b.HasIndex(x => new { x.ProductId, x.UserId }).IsUnique();
 			});
 		}
 

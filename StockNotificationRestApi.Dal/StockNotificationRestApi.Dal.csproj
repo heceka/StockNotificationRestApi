@@ -4,6 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Migrations\20220411071904_InitialCreate.cs" />
+    <Compile Remove="Migrations\20220411071904_InitialCreate.Designer.cs" />
+  </ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.23" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.23" />
@@ -11,6 +16,10 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\StockNotificationRestApi.Entities\StockNotificationRestApi.Entities.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Migrations\" />
 	</ItemGroup>
 	
 </Project>

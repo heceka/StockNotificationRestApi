@@ -10,7 +10,7 @@ using StockNotificationRestApi.Dal.Contexts.EntityFramework;
 namespace StockNotificationRestApi.Dal.Migrations
 {
     [DbContext(typeof(StockNotificationContext))]
-    [Migration("20220411071904_InitialCreate")]
+    [Migration("20220411074807_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -44,15 +44,7 @@ namespace StockNotificationRestApi.Dal.Migrations
                     b.Property<DateTime>("ModifiedDateTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("NotificationType")
-                        .HasColumnType("int");
-
                     b.Property<string>("ProductId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("UserEmail")
                         .IsRequired()
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
@@ -64,7 +56,7 @@ namespace StockNotificationRestApi.Dal.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProductId", "UserId", "NotificationType")
+                    b.HasIndex("ProductId", "UserId")
                         .IsUnique();
 
                     b.ToTable("StockNotifications");
