@@ -1,4 +1,5 @@
 ﻿using StockNotificationRestApi.Bll.Services.Abstracts;
+using StockNotificationRestApi.Core.Utilities.Results.Abstracts;
 using StockNotificationRestApi.Entities.DTOs;
 
 namespace StockNotificationRestApi.Bll.Handlers
@@ -18,7 +19,7 @@ namespace StockNotificationRestApi.Bll.Handlers
 
 		public void SendNotification(StockNotificationTrigger model)
 		{
-
+			IDataResult _service.GetAllByProductId(model.ProductId);
 		}
 	}
 }

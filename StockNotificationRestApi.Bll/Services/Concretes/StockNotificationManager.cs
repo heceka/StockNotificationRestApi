@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using StockNotificationRestApi.Bll.Services.Abstracts;
 using StockNotificationRestApi.Core.Resources;
@@ -34,6 +35,13 @@ namespace StockNotificationRestApi.Bll.Services.Concretes
 			return new SuccessDataResult<StockNotification>(entity);
 		}
 
+		#endregion
+
+		#region GET ALL BY PRODUCT ID
+		public Task<IDataResult<List<StockNotification>>> GetAllByProductId(string productId)
+		{
+			return Task. <IDataResult<List<StockNotification>>()
+		}
 		#endregion
 
 		#region ADD
