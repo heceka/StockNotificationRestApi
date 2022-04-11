@@ -5,7 +5,7 @@
 Web veya mobile uzerinden bir urunun stokta olmadigi durumda, kayitli kullanicinin "gelince haber ver" secenegini ile urun stok takibi yapabilmesini 
 saglamayi amaclamaktadir.
 
-Bildirimleri depolar ve onlari yonetir. Tetiklendiginde ilgili servislere (Web Notification ve Mobile Push Notification) bildirim bilgisini 
+Bildirimleri depolar ve onlari yonetir. Tetiklendiginde ilgili servislere (Email Notification ve Mobile Push Notification) bildirim bilgisini 
 (ProductId, UserId) gonderir.
 
 *Kullanici ister webden isterse mobileden bildirim talep etmis olsun, iki sekilde de bildirim saglanir. Mobile uygulamayi yuklememis kullanicilara 
