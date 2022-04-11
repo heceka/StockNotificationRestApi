@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using StockNotificationRestApi.Bll.Services.Abstracts;
+using StockNotificationRestApi.Bll.Services.Concretes;
 using StockNotificationRestApi.Dal.Contexts.EntityFramework;
 using StockNotificationRestApi.Dal.Repositories.Abstracts;
 using StockNotificationRestApi.Dal.Repositories.Concretes;
@@ -41,6 +43,7 @@ namespace StockNotificationRestApi
 			services.AddControllers();
 
 			services.AddScoped<IStockNotificationRepository, EfStockNotificationRepository>();
+			services.AddScoped<IStockNotificationService, StockNotificationManager>();
 		}
 		#endregion
 
@@ -62,7 +65,7 @@ namespace StockNotificationRestApi
 			{
 				endpoints.MapControllers();
 			});
-		} 
+		}
 		#endregion
 	}
 }

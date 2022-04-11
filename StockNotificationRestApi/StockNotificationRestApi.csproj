@@ -10,12 +10,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\StockNotificationRestApi.Bll\StockNotificationRestApi.Bll.csproj" />
 	  <ProjectReference Include="..\StockNotificationRestApi.Dal\StockNotificationRestApi.Dal.csproj" />
 	  <ProjectReference Include="..\StockNotificationRestApi.Entities\StockNotificationRestApi.Entities.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Controllers\" />
 	</ItemGroup>
 
 </Project>
