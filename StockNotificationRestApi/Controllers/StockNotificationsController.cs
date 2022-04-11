@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using StockNotificationRestApi.Bll.Handlers.Abstracts;
 using StockNotificationRestApi.Bll.Handlers.Concretes;
 using StockNotificationRestApi.Bll.Services.Abstracts;
+using StockNotificationRestApi.Core.Resources;
 using StockNotificationRestApi.Core.Utilities.Results.Abstracts;
 using StockNotificationRestApi.Entities.Concretes;
 using StockNotificationRestApi.Entities.DTOs;
@@ -14,19 +16,19 @@ using StockNotificationRestApi.Entities.DTOs;
 
 namespace StockNotificationRestApi.Controllers
 {
-	[Route("api/[controller]")]
+	[Route("api/[controller]/[action]")]
 	[ApiController]
 	public class StockNotificationsController : ControllerBase
 	{
 		#region DEFINES
 		private readonly IStockNotificationService _service;
 		private readonly ILogger<StockNotificationsController> _log;
-		private readonly NotificationHandler _notificationHandler;
+		private readonly INotificationHandler _notificationHandler;
 		#endregion
 
 		#region CONSTRUCTOR
 		public StockNotificationsController(IStockNotificationService service, ILogger<StockNotificationsController> log,
-			NotificationHandler notificationHandler)
+			INotificationHandler notificationHandler)
 		{
 			_service = service;
 			_log = log;
@@ -45,10 +47,11 @@ namespace StockNotificationRestApi.Controllers
 					IResult result = await _service.Add(model);
 					if( result.Success )
 					{
-						return Ok();
+						return Ok(StaticMessages.StockNotificationCreated);
 					}
 					return StatusCode(StatusCodes.Status500InternalServerError, result.Message);
 				}
+				//TODO Context singleton oldugu icin, silinen bildirimi tekrar eklerken DbUpdateConcurrencyException firlatiyor.
 				catch( Exception ex )
 				{
 					_log.LogError(ex, $"ProductId: {model.ProductId} - UserId: {model.UserId}");
@@ -71,7 +74,7 @@ namespace StockNotificationRestApi.Controllers
 					IResult result = await _service.Remove(model);
 					if( result.Success )
 					{
-						return Ok();
+						return Ok(StaticMessages.StockNotificationRemoved);
 					}
 					return StatusCode(StatusCodes.Status500InternalServerError, result.Message);
 				}

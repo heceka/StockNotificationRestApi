@@ -9,6 +9,7 @@ namespace StockNotificationRestApi.Dal.Repositories.Concretes
 	{
 		public EfStockNotificationRepository(StockNotificationContext context) : base(context)
 		{
+			BaseQ = context.Set<StockNotification>();
 		}
 	}
 }

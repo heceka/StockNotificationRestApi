@@ -75,7 +75,7 @@ namespace StockNotificationRestApi.Bll.Services.Concretes
 			}
 
 			IDataResult<StockNotification> dataResult = await GetByProductIdAndUserId(model.ProductId, model.UserId);
-			if( !dataResult.Success )
+			if( dataResult.Success )
 			{
 				return new ErrorResult(StaticMessages.StockNotificationAlreadyExists);
 			}
@@ -101,7 +101,6 @@ namespace StockNotificationRestApi.Bll.Services.Concretes
 				return new SuccessResult();
 			}
 			return dataResult;
-			//TODO return new ErrorResult(dataResult.MessageResourceName);
 		}
 		#endregion
 

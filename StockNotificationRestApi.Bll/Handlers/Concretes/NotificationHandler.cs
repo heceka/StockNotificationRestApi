@@ -34,7 +34,7 @@ namespace StockNotificationRestApi.Bll.Handlers.Concretes
 			IHttpClientFactory factory)
 		{
 			_service = service;
-			_config = config.GetSection("NotificationConfig").Get<NotificationApiConfig>();
+			_config = config.GetSection("NotificationApiConfig").Get<NotificationApiConfig>();
 			_log = log;
 
 			_client = factory.CreateClient();
@@ -99,7 +99,7 @@ namespace StockNotificationRestApi.Bll.Handlers.Concretes
 
 		#region TASK SEND STOCK NOTIFICATION BY TYPE
 		private async Task TaskSendStockNotificationByType(List<StockNotification> stockNotifications, string productName,
-	StockNotificationType stockNotificationType)
+			StockNotificationType stockNotificationType)
 		{
 			for( int i = 0; i < stockNotifications.Count; i++ )
 			{

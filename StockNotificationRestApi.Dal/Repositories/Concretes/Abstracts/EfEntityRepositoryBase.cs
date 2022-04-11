@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region USINGS
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -8,6 +9,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using StockNotificationRestApi.Dal.Contexts.EntityFramework;
 using StockNotificationRestApi.Dal.Repositories.Abstracts;
 using StockNotificationRestApi.Entities.Abstracts;
+#endregion
 
 namespace StockNotificationRestApi.Dal.Repositories.Concretes.Abstracts
 {
