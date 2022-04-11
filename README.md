@@ -7,5 +7,5 @@ saglamayi amaclamaktadir.
 Bildirimleri depolar ve onlari yonetir. Tetiklendiginde ilgili servislere (Web Notification ve Mobile Push Notification) bildirim bilgisini 
 (ProductId, UserId) gonderir.
 
-*Kullanici ister webden isterse mobileden bildirim talep etmis olsun, iki sekildede bildirim saglanir. Mobile uygulamayi yuklememis kullanicilara 
+*Kullanici ister webden isterse mobileden bildirim talep etmis olsun, iki sekilde de bildirim saglanir. Mobile uygulamayi yuklememis kullanicilara 
 gonderilecek bildirimin takibini Mobile Push Notification hizmeti yapacaktir. Bu hizmetin amaci sadece bildirimleri yonetmektir.
