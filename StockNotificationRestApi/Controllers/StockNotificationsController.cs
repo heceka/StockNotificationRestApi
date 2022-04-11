@@ -1,12 +1,16 @@
-﻿using System;
+﻿#region USINGS
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using StockNotificationRestApi.Bll.Handlers;
+using StockNotificationRestApi.Bll.Handlers.Concretes;
 using StockNotificationRestApi.Bll.Services.Abstracts;
 using StockNotificationRestApi.Core.Utilities.Results.Abstracts;
+using StockNotificationRestApi.Entities.Concretes;
 using StockNotificationRestApi.Entities.DTOs;
+#endregion
 
 namespace StockNotificationRestApi.Controllers
 {
@@ -15,17 +19,17 @@ namespace StockNotificationRestApi.Controllers
 	public class StockNotificationsController : ControllerBase
 	{
 		#region DEFINES
-		private readonly ILogger<StockNotificationsController> _logger;
 		private readonly IStockNotificationService _service;
+		private readonly ILogger<StockNotificationsController> _log;		
 		private readonly NotificationHandler _notificationHandler;
 		#endregion
 
 		#region CONSTRUCTOR
-		public StockNotificationsController(ILogger<StockNotificationsController> logger, IStockNotificationService service,
+		public StockNotificationsController(IStockNotificationService service, ILogger<StockNotificationsController> log,
 			NotificationHandler notificationHandler)
 		{
-			_logger = logger;
 			_service = service;
+			_log = log;			
 			_notificationHandler = notificationHandler;
 		}
 		#endregion
@@ -47,7 +51,7 @@ namespace StockNotificationRestApi.Controllers
 				}
 				catch( Exception ex )
 				{
-					_logger.LogError(ex, $"ProductId: {model.ProductId} - UserId: {model.UserId}");
+					_log.LogError(ex, $"ProductId: {model.ProductId} - UserId: {model.UserId}");
 					return StatusCode(StatusCodes.Status500InternalServerError);
 				}
 			}
@@ -73,7 +77,7 @@ namespace StockNotificationRestApi.Controllers
 				}
 				catch( Exception ex )
 				{
-					_logger.LogError(ex, $"ProductId: {model.ProductId} - UserId: {model.UserId}");
+					_log.LogError(ex, $"ProductId: {model.ProductId} - UserId: {model.UserId}");
 					return StatusCode(StatusCodes.Status500InternalServerError);
 				}
 			}
@@ -90,12 +94,17 @@ namespace StockNotificationRestApi.Controllers
 			{
 				try
 				{
-					_notificationHandler.SendNotification(model); 
-					return Ok();
+					IDataResult<List<StockNotification>> dataResult = await _notificationHandler.SendNotification(model);
+					if( dataResult.Success )
+					{
+						await _service.RemoveAll(dataResult.Data);
+						return Ok();
+					}
+					return StatusCode(StatusCodes.Status500InternalServerError, dataResult.Message);
 				}
 				catch( Exception ex )
 				{
-					_logger.LogError(ex, $"ProductId: {model.ProductId}");
+					_log.LogError(ex, $"ProductId: {model.ProductId}");
 					return StatusCode(StatusCodes.Status500InternalServerError);
 				}
 			}

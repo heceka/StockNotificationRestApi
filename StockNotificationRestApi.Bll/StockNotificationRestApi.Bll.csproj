@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http" Version="3.1.23" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\StockNotificationRestApi.Core\StockNotificationRestApi.Core.csproj" />
     <ProjectReference Include="..\StockNotificationRestApi.Dal\StockNotificationRestApi.Dal.csproj" />
     <ProjectReference Include="..\StockNotificationRestApi.Entities\StockNotificationRestApi.Entities.csproj" />

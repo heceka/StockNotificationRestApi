@@ -1,21 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+#region USINGS
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Http;
+using StockNotificationRestApi.Bll.Handlers.Abstracts;
+using StockNotificationRestApi.Bll.Handlers.Concretes;
 using StockNotificationRestApi.Bll.Services.Abstracts;
 using StockNotificationRestApi.Bll.Services.Concretes;
 using StockNotificationRestApi.Dal.Contexts.EntityFramework;
 using StockNotificationRestApi.Dal.Repositories.Abstracts;
 using StockNotificationRestApi.Dal.Repositories.Concretes;
+#endregion
 
 namespace StockNotificationRestApi
 {
@@ -37,13 +36,17 @@ namespace StockNotificationRestApi
 		{
 			#region ADD DB CONTEXT
 			services.AddDbContext<StockNotificationContext>(options =>
-				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")), ServiceLifetime.Singleton);
 			#endregion
 
 			services.AddControllers();
 
-			services.AddScoped<IStockNotificationRepository, EfStockNotificationRepository>();
-			services.AddScoped<IStockNotificationService, StockNotificationManager>();
+			services.AddHttpClient();
+			services.RemoveAll<IHttpMessageHandlerBuilderFilter>();
+
+			services.AddSingleton<IStockNotificationRepository, EfStockNotificationRepository>();
+			services.AddSingleton<IStockNotificationService, StockNotificationManager>();
+			services.AddSingleton<INotificationHandler, NotificationHandler>();
 		}
 		#endregion
 

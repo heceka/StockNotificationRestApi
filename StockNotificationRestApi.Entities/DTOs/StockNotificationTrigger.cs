@@ -7,5 +7,8 @@ namespace StockNotificationRestApi.Entities.DTOs
 		[Required]
 		[StringLength(256, MinimumLength = 4)]
 		public string ProductId { get; set; }
+
+		[Required]
+		public string ProductName { get; set; }
 	}
 }
