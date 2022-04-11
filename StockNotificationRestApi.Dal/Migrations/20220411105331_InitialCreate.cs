@@ -13,10 +13,7 @@ namespace StockNotificationRestApi.Dal.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CreatedByUser = table.Column<string>(nullable: true),
                     CreatedDateTime = table.Column<DateTime>(nullable: false),
-                    ModifiedByUser = table.Column<string>(nullable: true),
-                    ModifiedDateTime = table.Column<DateTime>(nullable: false),
                     ProductId = table.Column<string>(maxLength: 256, nullable: false),
                     UserId = table.Column<string>(maxLength: 256, nullable: false)
                 },

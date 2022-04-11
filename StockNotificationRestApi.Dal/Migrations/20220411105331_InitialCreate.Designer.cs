@@ -10,7 +10,7 @@ using StockNotificationRestApi.Dal.Contexts.EntityFramework;
 namespace StockNotificationRestApi.Dal.Migrations
 {
     [DbContext(typeof(StockNotificationContext))]
-    [Migration("20220411081044_InitialCreate")]
+    [Migration("20220411105331_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -28,16 +28,7 @@ namespace StockNotificationRestApi.Dal.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("CreatedByUser")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreatedDateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ModifiedByUser")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ModifiedDateTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ProductId")
