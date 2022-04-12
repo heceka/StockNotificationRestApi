@@ -12,5 +12,5 @@ Bildirimleri depolar ve onlari yonetir. Tetiklendiginde ilgili servislere (Email
 gonderilecek bildirimin takibini Mobile Push Notification hizmeti yapacaktir. Bu hizmetin amaci sadece bildirimleri yonetmektir.
 
 CONFIG:
-ConnectionStrings => DefaultConnection: "Server=[serverName];Database=AYVAZ_APPLICATIONS_PORTAL;Trusted_Connection=True;MultipleActiveResultSets=True"
+ConnectionStrings => DefaultConnection: "Server=[serverName];Database=STOCK_NOTIFICATION;Trusted_Connection=True;MultipleActiveResultSets=True"
 NotificationApiConfig => Email: "http://localhost:6000/api/EmailSend", Mobile: "http://localhost:7000/api/MobilePush"
