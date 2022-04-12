@@ -52,6 +52,7 @@ namespace StockNotificationRestApi.Controllers
 					return StatusCode(StatusCodes.Status500InternalServerError, result.Message);
 				}
 				//TODO Context singleton oldugu icin, silinen bildirimi tekrar eklerken DbUpdateConcurrencyException firlatiyor.
+				//cozum icin https://docs.microsoft.com/en-us/ef/core/saving/concurrency
 				catch( Exception ex )
 				{
 					_log.LogError(ex, $"ProductId: {model.ProductId} - UserId: {model.UserId}");
